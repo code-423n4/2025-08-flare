@@ -1,24 +1,7 @@
-# Repo setup
-
-## ⭐️ Sponsor: Add code to this repo
-
-- [ ] Create a PR to this repo with the below changes:
-- [ ] Confirm that this repo is a self-contained repository with working commands that will build (at least) all in-scope contracts, and commands that will run tests producing gas reports for the relevant contracts.
-- [ ] Please have final versions of contracts and documentation added/updated in this repo **no less than 48 business hours prior to audit start time.**
-- [ ] Be prepared for a 🚨code freeze🚨 for the duration of the audit — important because it establishes a level playing field. We want to ensure everyone's looking at the same code, no matter when they look during the audit. (Note: this includes your own repo, since a PR can leak alpha to our wardens!)
-
-## ⭐️ Sponsor: Repo checklist
-
-- [ ] Modify the [Overview](#overview) section of this `README.md` file. Describe how your code is supposed to work with links to any relevant documentation and any other criteria/details that the auditors should keep in mind when reviewing. (Here are two well-constructed examples: [Ajna Protocol](https://github.com/code-423n4/2023-05-ajna) and [Maia DAO Ecosystem](https://github.com/code-423n4/2023-05-maia))
-- [ ] Optional: pre-record a high-level overview of your protocol (not just specific smart contract functions). This saves wardens a lot of time wading through documentation.
-- [ ] Review and confirm the details created by the Scout (technical reviewer) who was assigned to your contest. *Note: any files not listed as "in scope" will be considered out of scope for the purposes of judging, even if the file will be part of the deployed contracts.*  
-
----
-
 # Flare audit details
 - Total Prize Pool: $190,000 in USDC
   - HM awards: up to $168,000 in USDC
-    - If no valid Highs or Mediums are found, the HM pool is $0 
+    - If no valid Highs or Mediums are found, the HM pool is $0
   - QA awards: $7,000 in USDC
   - Judge awards: $3,500 in USDC
   - Scout awards: $500 in USDC
@@ -27,15 +10,16 @@
 - Starts August 18, 2025 20:00 UTC
 - Ends September 22, 2025 20:00 UTC
 
-**❗ Important notes for wardens** 
+**❗ Important notes for wardens**
 1. Since this audit includes live/deployed code, **all submissions will be treated as sensitive**:
-    - [The "live criticals" exception](https://docs.code4rena.com/awarding#the-live-criticals-exception) therefore applies. 
     - Wardens are encouraged to submit High-risk submissions affecting live code promptly, to ensure timely disclosure of such vulnerabilities to the sponsor and guarantee payout in the case where a sponsor patches a live critical during the audit.
     - Submissions will be hidden from all wardens (SR and non-SR alike) by default, to ensure that no sensitive issues are erroneously shared.
     - If the submissions include findings affecting live code, there will be no post-judging QA phase. This ensures that awards can be distributed in a timely fashion, without compromising the security of the project. (Senior members of C4 staff will review the judges’ decisions per usual.)
     - By default, submissions will not be made public until the report is published.
     - Exception: if the sponsor indicates that no submissions affect live code, then we’ll make submissions visible to all authenticated wardens, and open PJQA to SR wardens per the usual C4 process.
-2. A coded, runnable PoC is required for all High/Medium submissions to this audit. 
+    - [The "live criticals" exception](https://docs.code4rena.com/awarding#the-live-criticals-exception) therefore applies.
+
+2. A coded, runnable PoC is required for all High/Medium submissions to this audit.
     - This repo includes a basic template to run the test suite.
     - PoCs must use the test suite provided in this repo.
     - Your submission will be marked as Insufficient if the POC is not runnable and working with the provided test suite.
@@ -54,112 +38,32 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 # Overview
 
-[ ⭐️ SPONSORS: add info here ]
+
+FAssets bring non-smart contract assets like XRP into DeFi — securely, scalably, and with full custody retained.
+
+This repository is a implementation of the system: solidity contracts for *Flare Foundation* FAsset.
+
+## Details
+
+The FAsset contracts are used to mint assets on top of Flare. The system is designed to handle chains which don’t have smart contract capabilities. Initially, FAsset system will support XRP native asset on XRPL. At a later date BTC, DOGE, add tokens from other blockchains will be added.
+
+The minted FAssets are secured by collateral, which is in the form of ERC20 tokens on Flare/Songbird chain and native tokens (FLR/SGB). The collateral is locked in contracts that guarantee that minted tokens can always be redeemed for underlying assets or compensated by collateral. Underlying assets can also be transferred to Core Vault, a vault on the underlying network. When the underlying is on the Core Vault, the agent doesn’t need to back it with collateral so they can mint again or decide to withdraw this collateral.
+
+
+Two novel protocols, available on Flare and Songbird blockchains, enable the FAsset system to operate:
+
+- **FTSO** contracts which provide decentralized price feeds for multiple tokens.
+- Flare’s **FDC**, which bridges payment data from any connected chain.
+
 
 ## Links
 
 - **Previous audits:**  https://dev.flare.network/support/audits
-  - ✅ SCOUTS: If there are multiple report links, please format them in a list.
 - **Documentation:** https://dev.flare.network/fassets/overview
 - **Website:** https://flare.network/
 - **X/Twitter:** https://x.com/FlareNetworks
 
 ---
-
-# Scope
-
-[ ✅ SCOUTS: add scoping and technical details here ]
-
-### Files in scope
-- ✅ This should be completed using the `metrics.md` file
-- ✅ Last row of the table should be Total: SLOC
-- ✅ SCOUTS: Have the sponsor review and and confirm in text the details in the section titled "Scoping Q amp; A"
-
-*For sponsors that don't use the scoping tool: list all files in scope in the table below (along with hyperlinks) -- and feel free to add notes to emphasize areas of focus.*
-
-| Contract | SLOC | Purpose | Libraries used |  
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/sample.sol](https://github.com/code-423n4/repo-name/blob/contracts/folder/sample.sol) | 123 | This contract does XYZ | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
-
-### Files out of scope
-✅ SCOUTS: List files/directories out of scope
-
-# Additional context
-
-## Areas of concern (where to focus for bugs)
-Bugs in Core Vault logic and interaction. Bugs in smart contracts, protocol bugs. Accounting bugs, mostly when interacting cross chain.
-
-✅ SCOUTS: Please format the response above 👆 so its not a wall of text and its readable.
-
-## Main invariants
-
-TODO
-
-✅ SCOUTS: Please format the response above 👆 so its not a wall of text and its readable.
-
-## All trusted roles in the protocol
-
-- Governance (multi-sig): controls protocol settings.
-- Agents: provide minting and redeeming services. While Agents undergo KYC, they cannot be considered fully trusted—especially if significant potential gains could incentivize malicious behavior.
-
-✅ SCOUTS: Please format the response above 👆 using the template below👇
-
-| Role                                | Description                       |
-| --------------------------------------- | ---------------------------- |
-| Owner                          | Has superpowers                |
-| Administrator                             | Can change fees                       |
-
-✅ SCOUTS: Please format the response above 👆 so its not a wall of text and its readable.
-
-## Running tests
-
-Clone repository (TODO: check correct link):
-```
-git clone https://github.com/code-423n4/2025-08-flare.git
-```
-
-Install dependencies & compile Solidity code:
-```
-yarn
-yarn c
-```
-
-Run tests:
-* `yarn testHH` - all tests in Hardhat environment (includes following two types of tests).
-* `yarn test_unit_hh` - only unit tests in hardhat environment.
-* `test_integration_hh` - only integration tests in hardhat environment.
-
-Check test coverage:
-```
-yarn cov
-```
-
-✅ SCOUTS: Please format the response above 👆 using the template below👇
-
-```bash
-git clone https://github.com/code-423n4/2023-08-arbitrum
-git submodule update --init --recursive
-cd governance
-foundryup
-make install
-make build
-make sc-election-test
-```
-To run code coverage
-```bash
-make coverage
-```
-
-✅ SCOUTS: Add a screenshot of your terminal showing the test coverage
-
-## Miscellaneous
-Employees of Flare and employees' family members are ineligible to participate in this audit.
-
-Code4rena's rules cannot be overridden by the contents of this README. In case of doubt, please check with C4 staff.
-
-TODO
-
-✅ SCOUTS: Please format the response above 👆 so its not a wall of text and its readable.
 
 
 # Scope
@@ -259,119 +163,51 @@ TODO
 
 *See [out_of_scope.txt](https://github.com/code-423n4/2025-08-flare/blob/main/out_of_scope.txt)*
 
-| File         |
-| ------------ |
-| ./contracts/agentOwnerRegistry/implementation/AgentOwnerRegistry.sol |
-| ./contracts/agentOwnerRegistry/implementation/AgentOwnerRegistryProxy.sol |
-| ./contracts/agentVault/implementation/AgentVault.sol |
-| ./contracts/agentVault/implementation/AgentVaultFactory.sol |
-| ./contracts/agentVault/interfaces/IIAgentVault.sol |
-| ./contracts/agentVault/interfaces/IIAgentVaultFactory.sol |
-| ./contracts/agentVault/mock/AgentVaultMock.sol |
-| ./contracts/assetManager/interfaces/IIAssetManager.sol |
-| ./contracts/assetManager/interfaces/IISettingsManagement.sol |
-| ./contracts/assetManager/mock/AssetManagerMock.sol |
-| ./contracts/assetManager/mock/DistributionToDelegatorsMock.sol |
-| ./contracts/assetManager/mock/MaliciousDistributionToDelegators.sol |
-| ./contracts/assetManager/mock/MaliciousExecutor.sol |
-| ./contracts/assetManager/mock/MaliciousMintExecutor.sol |
-| ./contracts/assetManager/mock/MaliciousRewardManager.sol |
-| ./contracts/assetManager/mock/MintingProxyMock.sol |
-| ./contracts/assetManager/mock/RewardManagerMock.sol |
-| ./contracts/assetManagerController/implementation/AssetManagerController.sol |
-| ./contracts/assetManagerController/implementation/AssetManagerControllerProxy.sol |
-| ./contracts/assetManagerController/interfaces/IIAssetManagerController.sol |
-| ./contracts/collateralPool/implementation/CollateralPool.sol |
-| ./contracts/collateralPool/implementation/CollateralPoolFactory.sol |
-| ./contracts/collateralPool/implementation/CollateralPoolToken.sol |
-| ./contracts/collateralPool/implementation/CollateralPoolTokenFactory.sol |
-| ./contracts/collateralPool/interfaces/IICollateralPool.sol |
-| ./contracts/collateralPool/interfaces/IICollateralPoolFactory.sol |
-| ./contracts/collateralPool/interfaces/IICollateralPoolToken.sol |
-| ./contracts/collateralPool/interfaces/IICollateralPoolTokenFactory.sol |
-| ./contracts/coreVaultManager/implementation/CoreVaultManager.sol |
-| ./contracts/coreVaultManager/implementation/CoreVaultManagerProxy.sol |
-| ./contracts/coreVaultManager/interfaces/IICoreVaultManager.sol |
-| ./contracts/diamond/facets/DiamondLoupeFacet.sol |
-| ./contracts/diamond/implementation/Diamond.sol |
-| ./contracts/diamond/interfaces/IDiamond.sol |
-| ./contracts/diamond/interfaces/IDiamondCut.sol |
-| ./contracts/diamond/interfaces/IDiamondLoupe.sol |
-| ./contracts/diamond/library/LibDiamond.sol |
-| ./contracts/diamond/mock/DiamondCutFacet.sol |
-| ./contracts/diamond/mock/DiamondInit.sol |
-| ./contracts/diamond/mock/MockDiamond.sol |
-| ./contracts/diamond/mock/Test1Facet.sol |
-| ./contracts/diamond/mock/Test2Facet.sol |
-| ./contracts/diamond/mock/TestLib.sol |
-| ./contracts/fassetToken/interfaces/IICheckPointable.sol |
-| ./contracts/fassetToken/interfaces/IIFAsset.sol |
-| ./contracts/fassetToken/mock/CheckPointHistoryMock.sol |
-| ./contracts/fassetToken/mock/CheckPointableMock.sol |
-| ./contracts/fassetToken/mock/CheckPointsByAddressMock.sol |
-| ./contracts/fdc/mock/FdcHubMock.sol |
-| ./contracts/fdc/mock/FdcRequestFeeConfigurationsMock.sol |
-| ./contracts/fdc/mock/FdcVerificationMock.sol |
-| ./contracts/fdc/mock/RelayMock.sol |
-| ./contracts/flareSmartContracts/implementation/AddressUpdatable.sol |
-| ./contracts/flareSmartContracts/interfaces/IAddressUpdatable.sol |
-| ./contracts/flareSmartContracts/interfaces/IWNat.sol |
-| ./contracts/flareSmartContracts/mock/AddressUpdatableMock.sol |
-| ./contracts/flareSmartContracts/mock/AddressUpdaterMock.sol |
-| ./contracts/flareSmartContracts/mock/GovernanceSettingsMock.sol |
-| ./contracts/flareSmartContracts/mock/WNatMock.sol |
-| ./contracts/ftso/implementation/FtsoV2PriceStore.sol |
-| ./contracts/ftso/implementation/FtsoV2PriceStoreProxy.sol |
-| ./contracts/ftso/interfaces/IPriceChangeEmitter.sol |
-| ./contracts/ftso/interfaces/IPricePublisher.sol |
-| ./contracts/ftso/interfaces/IPriceReader.sol |
-| ./contracts/ftso/mock/FakePriceReader.sol |
-| ./contracts/ftso/mock/FtsoV2PriceStoreMock.sol |
-| ./contracts/governance/interfaces/IGoverned.sol |
-| ./contracts/governance/mock/GovernedMock.sol |
-| ./contracts/governance/mock/GovernedWithTimelockMock.sol |
-| ./contracts/userInterfaces/IAgentAlwaysAllowedMinters.sol |
-| ./contracts/userInterfaces/IAgentOwnerRegistry.sol |
-| ./contracts/userInterfaces/IAgentPing.sol |
-| ./contracts/userInterfaces/IAgentVault.sol |
-| ./contracts/userInterfaces/IAssetManager.sol |
-| ./contracts/userInterfaces/IAssetManagerController.sol |
-| ./contracts/userInterfaces/IAssetManagerEvents.sol |
-| ./contracts/userInterfaces/ICollateralPool.sol |
-| ./contracts/userInterfaces/ICollateralPoolToken.sol |
-| ./contracts/userInterfaces/ICoreVaultClient.sol |
-| ./contracts/userInterfaces/ICoreVaultClientSettings.sol |
-| ./contracts/userInterfaces/ICoreVaultManager.sol |
-| ./contracts/userInterfaces/IFAsset.sol |
-| ./contracts/userInterfaces/IRedemptionTimeExtension.sol |
-| ./contracts/userInterfaces/data/AgentInfo.sol |
-| ./contracts/userInterfaces/data/AgentSettings.sol |
-| ./contracts/userInterfaces/data/AssetManagerSettings.sol |
-| ./contracts/userInterfaces/data/AvailableAgentInfo.sol |
-| ./contracts/userInterfaces/data/CollateralReservationInfo.sol |
-| ./contracts/userInterfaces/data/CollateralType.sol |
-| ./contracts/userInterfaces/data/RedemptionRequestInfo.sol |
-| ./contracts/userInterfaces/data/RedemptionTicketInfo.sol |
-| ./contracts/utils/interfaces/IUUPSUpgradeable.sol |
-| ./contracts/utils/interfaces/IUpgradableContractFactory.sol |
-| ./contracts/utils/interfaces/IUpgradableProxy.sol |
-| ./contracts/utils/mock/CustomErrorMock.sol |
-| ./contracts/utils/mock/ERC20Mock.sol |
-| ./contracts/utils/mock/FakeERC20.sol |
-| ./contracts/utils/mock/MathUtilsMock.sol |
-| ./contracts/utils/mock/MerkleTreeMock.sol |
-| ./contracts/utils/mock/MockProxyFactory.sol |
-| ./contracts/utils/mock/SafeMath64Mock.sol |
-| ./contracts/utils/mock/SafePctMock.sol |
-| ./contracts/utils/mock/SuicidalMock.sol |
-| ./contracts/utils/mock/TestUUPSProxyImpl.sol |
-| ./contracts/utils/mock/TransfersMock.sol |
-| ./test-forge/collateralPool/implementation/CollateralPool.t.sol |
-| ./test-forge/collateralPool/implementation/CollateralPoolHandler.t.sol |
-| ./test-forge/coreVaultManager/implementation/CoreVaultManager.t.sol |
-| ./test-forge/coreVaultManager/implementation/CoreVaultManagerHandler.t.sol |
-| ./test-forge/ftso/implementation/FtsoV2PriceStore.t.sol |
-| ./test-forge/ftso/implementation/FtsoV2PriceStoreHandler.t.sol |
-| ./test-forge/ftso/implementation/FtsoV2PriceStoreInvariant.t.sol |
-| Totals: 112 |
+# Additional context
 
+## Areas of concern (where to focus for bugs)
+- Bugs in Core Vault logic and interaction
+- Bugs in smart contracts, protocol bugs.
+- Accounting bugs, mostly when interacting cross chain.
+
+
+## Main invariants
+
+✅ TODO
+
+## All trusted roles in the protocol
+
+
+
+| Role                                | Description                       |
+| --------------------------------------- | ---------------------------- |
+| Governance (multi-sig)                          | controls protocol settings               |
+| Agents                             |  provide minting and redeeming services. While Agents undergo KYC, they cannot be considered fully trusted—especially if significant potential gains could incentivize malicious behavior.                       |
+
+
+## Running tests
+
+```shell
+# Clone repository:
+git clone https://github.com/code-423n4/2025-08-flare.git
+cd 2025-08-flare
+
+# Install dependencies & compile Solidity code:
+yarn
+yarn c
+```
+
+Run tests:
+* `yarn testHH` - all tests in Hardhat environment (includes following two types of tests).
+* `yarn test_unit_hh` - only unit tests in hardhat environment.
+* `yarn test_integration_hh` - only integration tests in hardhat environment.
+
+Check test coverage:
+```shell
+yarn cov
+```
+
+## Miscellaneous
+Employees of Flare and employees' family members are ineligible to participate in this audit.
+
+Code4rena's rules cannot be overridden by the contents of this README. In case of doubt, please check with C4 staff.
