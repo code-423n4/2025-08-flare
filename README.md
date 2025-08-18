@@ -1,4 +1,4 @@
-# Flare audit details
+# Flare FAssets audit details
 - Total Prize Pool: $190,000 in USDC
   - HM awards: up to $168,000 in USDC
     - If no valid Highs or Mediums are found, the HM pool is $0
@@ -35,7 +35,6 @@ The 4naly3er report can be found [here](https://github.com/code-423n4/2025-08-fl
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
-
 # Overview
 
 
@@ -60,18 +59,21 @@ Two novel protocols, available on Flare and Songbird blockchains, enable the FAs
 
 - **Previous audits:**  https://dev.flare.network/support/audits
 - **Documentation:** https://dev.flare.network/fassets/overview
+- **Tests with sample attack scenarios:** https://github.com/code-423n4/2025-08-flare/blob/main/test/integration/assetManager/AttackScenarios.ts
 - **Website:** https://flare.network/
 - **X/Twitter:** https://x.com/FlareNetworks
 
 ---
 
-
 # Scope
 
-*See [scope.txt](https://github.com/code-423n4/2025-08-flare/blob/main/scope.txt)*
+### Tokens in scope
+
+The FAssets system is able to support wrapped tokens for XRP, BTC and DOGE. However, the initial deployment will only have XRP (FXRP) enabled and that will be the sole scope of this audit competition. Any attacks related to FBTC, FDOGE, or UTXO-based logic in general, are out of scope.
 
 ### Files in scope
 
+*See [scope.txt](https://github.com/code-423n4/2025-08-flare/blob/main/scope.txt)*
 
 | File   | Logic Contracts | Interfaces | nSLOC | Purpose | Libraries used |
 | ------ | --------------- | ---------- | ----- | -----   | ------------ |
@@ -170,20 +172,18 @@ Two novel protocols, available on Flare and Songbird blockchains, enable the FAs
 - Bugs in smart contracts, protocol bugs.
 - Accounting bugs, mostly when interacting cross chain.
 
-
 ## Main invariants
 
-✅ TODO
+See [System Design](SystemDesign.md).
 
 ## All trusted roles in the protocol
-
-
 
 | Role                                | Description                       |
 | --------------------------------------- | ---------------------------- |
 | Governance (multi-sig)                          | controls protocol settings               |
 | Agents                             |  provide minting and redeeming services. While Agents undergo KYC, they cannot be considered fully trusted—especially if significant potential gains could incentivize malicious behavior.                       |
 
+Note that vulnerabilities requiring access to an Agent role without additional modifications to the privileges attributed are open to be downgraded by one level of severity.
 
 ## Running tests
 
@@ -204,7 +204,7 @@ Run tests:
 
 Check test coverage:
 ```shell
-yarn cov
+yarn test-with-coverage
 ```
 
 ## Miscellaneous
