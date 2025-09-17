@@ -37,8 +37,9 @@ The 4naly3er report can be found [here](https://github.com/code-423n4/2025-08-fl
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
-# Overview
+Any submissions pertaining to issues identified within the [Immunefi report](https://immunefi.com/audit-competition/audit-comp-flare-fassets), that are received after **August 25th at 11:18 AM UTC**, will be considered out of scope.
 
+# Overview
 
 FAssets bring non-smart contract assets like XRP into DeFi — securely, scalably, and with full custody retained.
 
