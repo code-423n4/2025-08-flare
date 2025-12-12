@@ -1,0 +1,146 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-PUBLIC / flare-fasset-aug
+==============================================================
+
+[08/18/2025 19:49] itsmetechjay (pinned)
+👋 Hello and welcome to the $190,000 in USDC **Flare** audit channel!
+
+📆 Audit opens Tuesday, 19 August 2025 20:00 (20:00 UTC) and runs through Tuesday, 23 September 2025 20:00 (20:00 UTC) (35 days).
+
+ℹ️ This audit includes **deployed code,** and Code4rena's [live code rules](https://docs.code4rena.com/competitions/live-code-rules) will be in effect. 
+
+**❗A coded, runnable PoC is required for all High/Medium submissions to this audit.**
+- The audit repo includes a basic PoC template to run the test suite.
+- PoCs **must** use the test suite provided in the audit repo.
+- Your submission will be marked as `Insufficient` if the POC is not runnable and working with the provided test suite.
+- Exception: PoC is optional (though recommended) for wardens with signal ≥ 0.68
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Join the audit: https://code4rena.com/audits/2025-08-flare-fasset
+
+{Reactions}
+👍 (7) 
+
+[08/18/2025 19:49] itsmetechjay
+Pinned a message.
+
+
+[08/19/2025 20:00] itsmetechjay (pinned)
+🔎 **Got audit-related questions? Here's your roadmap** 
+
+Find the information you need efficiently:
+
+1. Step 1: **Review project documentation** in the audit repo. [Join the audit](https://code4rena.com/audits/2025-08-flare-fasset) for access.
+2. Step 2: Use **🤖 Docs Wolf,** C4's documentation bot assistant. Open a private thread, tag `@Docs Wolf`, and ask your question. The bot will make its best attempt to answer based on the codebase and documentation, and link you to relevant resources. 
+3. Step 3: If you still need clarification after reviewing the docs, feel free to **ask the Flare team** directly. From [the audit page](https://code4rena.com/audits/2025-08-flare-fasset), join the audit and select the `Q & A` tab.
+
+To ensure sponsors can focus their time on questions that truly need their expertise, please: 
+
+- Reference what you've already checked in the docs
+- Be specific about what you need clarified
+- Use thread replies to keep discussions organized
+
+Good hunting!
+
+{Reactions}
+👍🏻 (20) ⚙️ 
+
+[08/19/2025 20:00] itsmetechjay
+Pinned a message.
+
+
+[08/27/2025 17:05] thebrittfactor
+ℹ️ The PoC requirements have been updated for the Flare audit. The [readme](https://github.com/code-423n4/2025-08-flare) has been updated with the additional bullets below:
+
+- It is preferable to submit your PoC in Hardhat, using the test suite provided in the audit repo.
+- Foundry PoCs will only be accepted if you provide instructions to run it **within the existing test suite**.
+- Please check your formatting to ensure that it runs properly.
+
+{Reactions}
+👍🏻 (2) 👍 
+
+[08/29/2025 11:47] cloudellie
+Happy Friday, @🐺Wardens! Heads up that there's an X Space today (Friday, 29 August 2025 13:30) to discuss FAssets and Web3 security: https://x.com/FlareDevHub/status/1960812490268242326. Hope you can join us!
+
+{Reactions}
+👍 (16) 😽 (5) 👽 (3) 
+
+[09/02/2025 09:43] cloudellie
+Space recording is here for those who missed it: https://x.com/i/spaces/1vOGwdnoabgJB
+
+{Embed}
+https://twitter.com/i/spaces/1vOGwdnoabgJB
+Play recording: Web3 Security and Competition Audits with Code4rena
+Flare Devs’s Space · Where live audio conversations happen
+Code4rena - ARCHIVE-PUBLIC - flare-fasset-aug [1405592588597198918].txt_Files/TwitterSpacesCardImage.3-65BF8.jpg
+X
+
+{Reactions}
+🎉 (11) 🙏 (6) 🔥 (5) 
+
+[09/17/2025 18:43] thebrittfactor
+ℹ️  We've been made aware that the Immunefi report covering FAssets was published during the audit contest on **August 25 at 11:18 AM UTC**, so this has been added to the [known issues](https://github.com/code-423n4/2025-08-flare?tab=readme-ov-file#automated-findings--publicly-known-issues) of the audit repo readme. Any submissions pertaining to issues identified within the report, that are received after that point, will be considered out of scope.
+
+{Reactions}
+👍 (6) 
+
+[09/23/2025 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺Wardens The **Flare - FAsset** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Progress through the judging, awarding, and reporting phases can be tracked via [the audit page](https://code4rena.com/audits/2025-08-flare-fasset).
+
+{Reactions}
+👍 (5) 
+
+[09/26/2025 13:40] thebrittfactor
+@🐺Wardens Submissions for **Flare** can now be viewed in the C4 app [here](https://code4rena.com/audits/2025-08-flare-fasset). 
+
+- Submissions are still being discussed between the judge and sponsors
+- Commenting will be available for SR wardens when PJQA opens
+
+{Reactions}
+👍 (29) 
+
+[10/23/2025 00:53] thebrittfactor
+🤑 🎉  Awards for **Flare FAsset**:
+
+$84,645.82 USDC » @rick
+$35,821.63 USDC » @rvierdiiev
+$35,821.63 USDC » @Farman
+$11,710.92 USDC » @givn
+$3,315.79 USDC » @JeRRy
+$2,210.53 USDC » @Ephraim
+$1,473.68 USDC » @LeoGold
+
+🏁 Findings summary
+--------------------------------------
+0 High risk findings
+4 Med risk findings
+1350 wardens participated
+
+Top Hunter: pashap9990 (rick)
+Top Gatherer: pashap9990 (rick)
+Top QA report: jerry0422
+
+Awards will be distributed on Ethereum within the next week. Congratulations all!  💸 💸 💸
+
+⚠️ Awardees, be sure to [complete your tax reporting info](https://docs.code4rena.com/awarding/incentive-model-and-awards/awarding-process#tax-information-for-code4rena-contributors-wardens-judges-etc) if you haven't already. This must be completed within 30 days (i.e. before Sunday, 23 November 2025) to receive your award distribution for this audit.
+
+{Reactions}
+😭 (7) 🚀 (13) 🫡 (6) 🔥 (5) 💯 (3) 👎 
+
+[12/03/2025 21:00] C4
+ℹ️ This channel is pending archive.   As a result, any private threads will be permanently deleted 12/12/2025 15:00. Please make sure to grab anything you might need before then.
+
+
+[12/11/2025 16:18] C4
+ℹ️ Reminder: this channel will be deleted after 24 hours.
+
+
+==============================================================
+Exported 13 message(s)
+==============================================================
